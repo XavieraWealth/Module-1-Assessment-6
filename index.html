@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Pages Image Fix</title>
+    <title>GitHub Pages Image Fix Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #3498db;
@@ -221,6 +222,59 @@
             border-radius: 0 4px 4px 0;
         }
         
+        .tab-container {
+            margin: 20px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .checklist {
+            list-style-type: none;
+        }
+        
+        .checklist li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
         @media (max-width: 768px) {
             .image-grid {
                 grid-template-columns: 1fr;
@@ -237,92 +291,55 @@
             .step-number {
                 margin-bottom: 10px;
             }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                margin-bottom: 5px;
+                border-radius: 5px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>GitHub Pages Image Fix</h1>
+            <h1>GitHub Pages Image Fix Guide</h1>
             <p class="subtitle">Diagnose and resolve image display issues on your site</p>
         </header>
         
         <div class="content">
             <div class="section">
-                <h2>What to Do With This Code</h2>
-                <p>You have two options for using this diagnostic tool:</p>
+                <h2>How to Fix Your GitHub Pages Images</h2>
+                <p>Based on your GitHub Pages site, here are the steps to fix your image display issues:</p>
                 
                 <div class="step">
                     <div class="step-number">1</div>
                     <div class="step-content">
-                        <h3>Use as a Diagnostic Tool</h3>
-                        <p>Save this HTML file to your computer and open it in a browser to diagnose common image issues.</p>
-                        <button class="btn" onclick="downloadFile()">Download Diagnostic Tool</button>
+                        <h3>Check Your File Paths</h3>
+                        <p>The most common issue is incorrect paths to image files. GitHub Pages is case-sensitive and requires exact paths.</p>
+                        <div class="code">
+                            &lt;!-- Correct --&gt;<br>
+                            &lt;img src="images/photo.jpg" alt="Description"&gt;<br><br>
+                            
+                            &lt;!-- Incorrect --&gt;<br>
+                            &lt;img src="Images/photo.jpg" alt="Description"&gt;<br>
+                            &lt;img src="image/photo.jpg" alt="Description"&gt;
+                        </div>
                     </div>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h3>Replace Your GitHub Pages Code</h3>
-                        <p>Copy this entire code and replace your current index.html file on GitHub with this content.</p>
-                        <div class="note">
-                            <strong>Note:</strong> This will replace your current website with this diagnostic tool. Only do this if you want to completely replace your current site.
-                        </div>
-                        <button class="btn btn-secondary" onclick="copyCode()">Copy HTML Code to Clipboard</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>Common Reasons Images Don't Display on GitHub Pages</h2>
-                <p>Based on your GitHub Pages site, here are the most likely reasons some images aren't showing:</p>
-                
-                <h3>1. Incorrect File Paths</h3>
-                <p>The most common issue is incorrect paths to image files. GitHub Pages sites are case-sensitive and require exact paths.</p>
-                <div class="code">
-                    &lt;!-- Correct --&gt;<br>
-                    &lt;img src="images/photo.jpg" alt="Description"&gt;<br><br>
-                    
-                    &lt;!-- Incorrect --&gt;<br>
-                    &lt;img src="Images/photo.jpg" alt="Description"&gt;<br>
-                    &lt;img src="image/photo.jpg" alt="Description"&gt;
-                </div>
-                
-                <h3>2. Case Sensitivity</h3>
-                <p>GitHub Pages is case-sensitive. "Image.jpg" is different from "image.jpg".</p>
-                
-                <h3>3. File Extensions</h3>
-                <p>Make sure the file extension in your code matches the actual file extension (.jpg vs .jpeg vs .png).</p>
-                
-                <h3>4. Repository Structure</h3>
-                <p>Your images should be in your repository, not just on your local machine.</p>
-            </div>
-            
-            <div class="section">
-                <h2>How to Fix Your Images</h2>
-                
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Check Your Repository Structure</h3>
-                        <p>Ensure your images are actually in your GitHub repository, not just on your local machine.</p>
-                        <a href="https://github.com/xavierawealth/Module-1-Assessment-6" class="btn" target="_blank">Check Your Repository</a>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Use Correct Relative Paths</h3>
-                        <p>If your HTML file is at the root and your images are in an "images" folder:</p>
+                        <h3>Verify Case Sensitivity</h3>
+                        <p>GitHub Pages is case-sensitive. "Image.jpg" is different from "image.jpg". Check that your file names match exactly.</p>
                         <div class="code">
-                            &lt;img src="images/your-image.jpg" alt="Description"&gt;
-                        </div>
-                        
-                        <p>If your HTML file is in a folder and you need to go up one level:</p>
-                        <div class="code">
-                            &lt;img src="../images/your-image.jpg" alt="Description"&gt;
+                            # Check your repository for exact file names<br>
+                            git status<br>
+                            git ls-files
                         </div>
                     </div>
                 </div>
@@ -330,67 +347,184 @@
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <h3>Verify Case Sensitivity</h3>
-                        <p>Check that the case of your folder and file names matches exactly what's in your code.</p>
+                        <h3>Check File Extensions</h3>
+                        <p>Make sure the file extension in your code matches the actual file extension (.jpg vs .jpeg vs .png).</p>
+                        <div class="code">
+                            &lt;!-- Match the actual file extension --&gt;<br>
+                            &lt;img src="images/photo.png" alt="Description"&gt;
+                        </div>
                     </div>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">4</div>
                     <div class="step-content">
-                        <h3>Clear Your Browser Cache</h3>
-                        <p>Sometimes old versions of pages are cached. Press Ctrl+F5 to hard refresh.</p>
+                        <h3>Verify Repository Structure</h3>
+                        <p>Your images should be in your repository, not just on your local machine. Push all image files to GitHub.</p>
+                        <a href="https://github.com/xavierawealth/Module-1-Assessment-6" class="btn" target="_blank">Check Your Repository</a>
                     </div>
                 </div>
             </div>
             
             <div class="section">
-                <h2>Next Steps</h2>
-                <p>If you're still having issues after checking these points:</p>
-                <ol>
-                    <li>Open your browser's Developer Tools (F12) and check the Console tab for error messages</li>
-                    <li>Look for 404 errors in the Network tab indicating missing files</li>
-                    <li>Verify your image files are committed and pushed to GitHub</li>
-                    <li>Check that your image files aren't too large (optimize images if needed)</li>
-                </ol>
+                <h2>Image Diagnostic Tool</h2>
+                <p>Test different image paths to see what might be causing your issues:</p>
+                
+                <div class="tab-container">
+                    <div class="tabs">
+                        <div class="tab active" onclick="openTab(event, 'tab1')">Relative Paths</div>
+                        <div class="tab" onclick="openTab(event, 'tab2')">Absolute Paths</div>
+                        <div class="tab" onclick="openTab(event, 'tab3')">Case Sensitivity</div>
+                    </div>
+                    
+                    <div id="tab1" class="tab-content active">
+                        <h3>Relative Path Examples</h3>
+                        <p>These paths are relative to your HTML file's location:</p>
+                        <div class="image-grid">
+                            <div class="image-item">
+                                <img src="https://placehold.co/600x400/3498db/ffffff?text=images/image.jpg" alt="Relative Path">
+                                <div class="image-info">
+                                    <h3>images/image.jpg</h3>
+                                    <p>Looks for an "images" folder in the same directory as your HTML file.</p>
+                                    <span class="status loading">Testing...</span>
+                                </div>
+                            </div>
+                            
+                            <div class="image-item">
+                                <img src="https://placehold.co/600x400/2ecc71/ffffff?text=./image.jpg" alt="Current Directory">
+                                <div class="image-info">
+                                    <h3>./image.jpg</h3>
+                                    <p>Looks in the same directory as your HTML file.</p>
+                                    <span class="status loading">Testing...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="tab2" class="tab-content">
+                        <h3>Absolute Path Examples</h3>
+                        <p>These paths are relative to the root of your website:</p>
+                        <div class="image-grid">
+                            <div class="image-item">
+                                <img src="https://placehold.co/600x400/e74c3c/ffffff?text=/images/image.jpg" alt="Absolute Path">
+                                <div class="image-info">
+                                    <h3>/images/image.jpg</h3>
+                                    <p>Looks for an "images" folder at the root of your site.</p>
+                                    <span class="status loading">Testing...</span>
+                                </div>
+                            </div>
+                            
+                            <div class="image-item">
+                                <img src="https://placehold.co/600x400/9b59b6/ffffff?text=/image.jpg" alt="Root Path">
+                                <div class="image-info">
+                                    <h3>/image.jpg</h3>
+                                    <p>Looks for image.jpg at the root of your site.</p>
+                                    <span class="status loading">Testing...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="tab3" class="tab-content">
+                        <h3>Case Sensitivity Examples</h3>
+                        <p>GitHub Pages is case-sensitive. These examples show common issues:</p>
+                        <div class="image-grid">
+                            <div class="image-item">
+                                <img src="https://placehold.co/600x400/34495e/ffffff?text=Images/image.jpg" alt="Wrong Case">
+                                <div class="image-info">
+                                    <h3>Images/image.jpg</h3>
+                                    <p>If your folder is named "images", this will fail.</p>
+                                    <span class="status loading">Testing...</span>
+                                </div>
+                            </div>
+                            
+                            <div class="image-item">
+                                <img src="https://placehold.co/600x400/f39c12/ffffff?text=images/Image.jpg" alt="Wrong Case">
+                                <div class="image-info">
+                                    <h3>images/Image.jpg</h3>
+                                    <p>If your file is named "image.jpg", this will fail.</p>
+                                    <span class="status loading">Testing...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Quick Checklist for Fixing Images</h2>
+                <ul class="checklist">
+                    <li>Verify all image files are actually in your GitHub repository</li>
+                    <li>Check that file paths in your HTML match the case of your folders and files</li>
+                    <li>Ensure file extensions match (.jpg, .png, .gif, etc.)</li>
+                    <li>Use relative paths that work with your site's structure</li>
+                    <li>Clear your browser cache (Ctrl+F5) to see changes</li>
+                    <li>Check the browser console (F12) for error messages</li>
+                </ul>
+                
+                <div class="note">
+                    <strong>Pro Tip:</strong> After making changes to your GitHub repository, it may take a few minutes for the changes to appear on your live site.
+                </div>
                 
                 <a href="https://xavierawealth.github.io/Module-1-Assessment-6/" class="btn btn-accent" target="_blank">View Your Live Site</a>
+                <a href="https://github.com/xavierawealth/Module-1-Assessment-6" class="btn btn-secondary" target="_blank">Check Your Repository</a>
+            </div>
+            
+            <div class="section">
+                <h2>Need More Help?</h2>
+                <p>If you're still having issues after checking all of the above:</p>
+                
+                <div class="step">
+                    <div class="step-number"><i class="fas fa-bug"></i></div>
+                    <div class="step-content">
+                        <h3>Check Browser Console for Errors</h3>
+                        <p>Open Developer Tools (F12) and look for 404 errors in the Console or Network tab.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number"><i class="fas fa-upload"></i></div>
+                    <div class="step-content">
+                        <h3>Verify Files Are Uploaded</h3>
+                        <p>Ensure all image files have been committed and pushed to GitHub.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number"><i class="fas fa-history"></i></div>
+                    <div class="step-content">
+                        <h3>Wait for GitHub Pages Build</h3>
+                        <p>Sometimes changes take a few minutes to appear. Check your repository's Actions tab to see if the build is complete.</p>
+                    </div>
+                </div>
             </div>
         </div>
         
         <footer>
-            <p>GitHub Pages Image Diagnostic Tool • Created to help fix your site</p>
+            <p>GitHub Pages Image Fix Guide • Created to help resolve your image display issues</p>
         </footer>
     </div>
 
     <script>
-        // Function to copy the entire HTML code to clipboard
-        function copyCode() {
-            const htmlContent = document.documentElement.outerHTML;
+        // Function to switch tabs
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
             
-            navigator.clipboard.writeText(htmlContent)
-                .then(() => {
-                    alert('HTML code copied to clipboard! You can now paste it into your index.html file on GitHub.');
-                })
-                .catch(err => {
-                    console.error('Failed to copy: ', err);
-                    alert('Failed to copy code. Please try again.');
-                });
-        }
-        
-        // Function to download the HTML file
-        function downloadFile() {
-            const htmlContent = document.documentElement.outerHTML;
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
+            // Hide all tab content
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
             
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'github-pages-image-fix.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            // Remove active class from all tabs
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            // Show the specific tab content and add active class to the button
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
         }
         
         // Simple image status checker
@@ -400,29 +534,33 @@
             images.forEach(img => {
                 // Check if image loaded successfully
                 if (img.complete) {
-                    if (img.naturalHeight === 0) {
-                        // Image failed to load
-                        if (img.parentElement.querySelector('.status')) {
-                            img.parentElement.querySelector('.status').textContent = 'Failed to Load';
-                            img.parentElement.querySelector('.status').className = 'status error';
-                        }
-                    }
+                    updateImageStatus(img);
                 } else {
                     img.addEventListener('load', function() {
-                        if (img.parentElement.querySelector('.status')) {
-                            img.parentElement.querySelector('.status').textContent = 'Loaded Successfully';
-                            img.parentElement.querySelector('.status').className = 'status success';
-                        }
+                        updateImageStatus(img, true);
                     });
                     
                     img.addEventListener('error', function() {
-                        if (img.parentElement.querySelector('.status')) {
-                            img.parentElement.querySelector('.status').textContent = 'Failed to Load';
-                            img.parentElement.querySelector('.status').className = 'status error';
-                        }
+                        updateImageStatus(img, false);
                     });
                 }
             });
+            
+            function updateImageStatus(img, success = null) {
+                if (!img.parentElement.querySelector('.status')) return;
+                
+                if (success === null) {
+                    success = img.naturalHeight !== 0;
+                }
+                
+                if (success) {
+                    img.parentElement.querySelector('.status').textContent = 'Loaded Successfully';
+                    img.parentElement.querySelector('.status').className = 'status success';
+                } else {
+                    img.parentElement.querySelector('.status').textContent = 'Failed to Load';
+                    img.parentElement.querySelector('.status').className = 'status error';
+                }
+            }
         });
     </script>
 </body>
