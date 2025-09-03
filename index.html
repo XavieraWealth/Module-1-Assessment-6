@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechGadgets - Product Catalogue</title>
+    <title>TechGadgets - Premium Electronics Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -13,41 +14,104 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
         body {
-            background-color: #f5f7fa;
+            background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
+            padding-top: 80px;
         }
         
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
             color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            background-color: #c0392b;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2.2rem;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .logo {
-            font-size: 28px;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: bold;
             display: flex;
             align-items: center;
         }
         
         .logo i {
-            margin-right: 10px;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin-right: 0.5rem;
+            color: var(--primary);
         }
         
         .nav-links {
@@ -56,545 +120,483 @@
         }
         
         .nav-links li {
-            margin-left: 30px;
+            margin-left: 1.5rem;
         }
         
         .nav-links a {
             color: white;
             text-decoration: none;
+            transition: color 0.3s;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 4px;
+            font-size: 1.1rem;
         }
         
         .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--primary);
         }
         
         /* Hero Section */
         .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 60px 0;
-            background: white;
-            margin: 20px 0;
+            color: white;
+            margin-bottom: 3rem;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #2c3e50;
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
-        .hero p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            max-width: 800px;
-            margin: 0 auto;
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
         }
         
         /* Product Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
         
         .product-card {
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
-        .product-img {
-            height: 200px;
+        .product-image {
             width: 100%;
+            height: 220px;
             object-fit: cover;
-            border-bottom: 1px solid #eee;
         }
         
         .product-info {
-            padding: 20px;
-        }
-        
-        .product-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        
-        .product-info p {
-            color: #7f8c8d;
-            margin-bottom: 15px;
-        }
-        
-        .price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #6a11cb;
-        }
-        
-        /* Product Page */
-        .product-detail {
-            display: none;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 40px 0;
-        }
-        
-        .product-gallery {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .product-gallery img {
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .product-gallery img:hover {
-            transform: scale(1.05);
-        }
-        
-        .main-image {
-            grid-column: span 4;
-            height: 400px;
-            object-fit: cover;
-        }
-        
-        .product-detail h2 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-        
-        .detail-price {
-            font-size: 1.8rem;
-            color: #6a11cb;
-            margin: 15px 0;
-        }
-        
-        .stock {
-            font-size: 1.1rem;
-            margin: 15px 0;
-            padding: 8px 15px;
-            background-color: #f1f8e9;
-            border-left: 4px solid #7cb342;
-            display: inline-block;
-        }
-        
-        .description {
-            margin: 20px 0;
-            line-height: 1.8;
-            color: #555;
-        }
-        
-        .product-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        
-        .product-table th, .product-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .product-table th {
-            background-color: #f8f9fa;
-            font-weight: 600;
-        }
-        
-        .buy-btn {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
-        }
-        
-        .buy-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);
-        }
-        
-        /* About and Contact Pages */
-        .page {
-            display: none;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 40px 0;
-        }
-        
-        .page h2 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-        
-        .page p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-            color: #555;
-        }
-        
-        .contact-info {
-            margin: 20px 0;
-        }
-        
-        .contact-info div {
-            margin-bottom: 15px;
+            padding: 1.5rem;
+            flex-grow: 1;
             display: flex;
-            align-items: center;
+            flex-direction: column;
         }
         
-        .contact-info i {
-            margin-right: 15px;
-            color: #6a11cb;
-            font-size: 1.2rem;
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
         }
         
-        .contact-form {
-            margin-top: 30px;
+        .product-price {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
         }
         
-        .form-group {
-            margin-bottom: 20px;
+        .product-description {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            color: #666;
         }
         
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+        .view-product {
+            align-self: flex-start;
+            margin-top: auto;
         }
         
         /* Footer */
         footer {
-            background: #2c3e50;
+            background-color: var(--secondary);
             color: white;
-            padding: 40px 0;
-            margin-top: 60px;
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
         }
         
         .footer-content {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
         
         .footer-section {
             flex: 1;
             min-width: 250px;
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
         }
         
         .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            color: var(--primary);
         }
         
-        .footer-section p {
-            margin-bottom: 10px;
+        .footer-section p, .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary);
         }
         
         .social-icons a {
-            color: white;
-            margin-right: 15px;
+            display: inline-block;
+            margin-right: 1rem;
             font-size: 1.5rem;
-            transition: color 0.3s ease;
         }
         
-        .social-icons a:hover {
-            color: #6a11cb;
-        }
-        
-        .copyright {
+        .footer-bottom {
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 2rem;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
             .nav-links {
-                display: none;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
             }
             
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            
-            .product-gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .main-image {
-                grid-column: span 2;
-                height: 300px;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
             
             .footer-section {
-                flex: 100%;
+                min-width: 100%;
             }
+        }
+        
+        /* About Page Styles */
+        .about-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .about-content h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        /* Contact Page Styles */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 1rem;
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 25px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Product Page Styles */
+        .product-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .product-gallery {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .main-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .thumbnail-container {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .thumbnail:hover {
+            opacity: 1;
+        }
+        
+        .product-detail-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-detail-title {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .product-detail-price {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .stock-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stock-info i {
+            color: var(--success);
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .product-detail-description {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .product-specs {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        
+        .product-specs th,
+        .product-specs td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .product-specs th {
+            background-color: #f8f9fa;
+            width: 30%;
+        }
+        
+        .buy-now-btn {
+            background-color: var(--accent);
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
         }
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <i class="fas fa-laptop-code"></i>
-                    <span>TechGadgets</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#" class="nav-link" data-page="home">Home</a></li>
-                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
-                    <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
-                </ul>
-            </nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                <span>TechGadgets</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Home Page -->
-        <div id="home-page">
-            <div class="hero">
-                <h1>Welcome to TechGadgets</h1>
-                <p>Discover the latest tech gadgets at amazing prices. We offer high-quality products with fast shipping and excellent customer service.</p>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Premium Tech Products</h1>
+                <p>Discover our curated collection of high-quality electronics and gadgets</p>
+                <a href="#products" class="btn">Explore Products</a>
             </div>
+        </section>
 
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <div class="product-card" data-product="1">
-                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Laptop" class="product-img">
-                    <div class="product-info">
-                        <h3>UltraThin Laptop</h3>
-                        <p>Powerful and portable laptop for professionals</p>
-                        <div class="price">$999.99</div>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card" data-product="2">
-                    <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Gaming Console" class="product-img">
-                    <div class="product-info">
-                        <h3>Pro Gaming Console</h3>
-                        <p>Next-gen gaming with stunning graphics</p>
-                        <div class="price">$449.99</div>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card" data-product="3">
-                    <img src="https://images.unsplash.com/photo-1585298723682-7115561c51b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt headphones class="product-img">
-                    <div class="product-info">
-                        <h3>Wireless Headphones</h3>
-                        <p>Premium sound quality with noise cancellation</p>
-                        <div class="price">$199.99</div>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card" data-product="4">
-                    <img src="https://images.unsplash.com/photo-1585123334904-845d60e97b29?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Smart Watch" class="product-img">
-                    <div class="product-info">
-                        <h3>Smart Watch Series 5</h3>
-                        <p>Track your fitness and stay connected</p>
-                        <div class="price">$299.99</div>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card" data-product="5">
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Headphones" class="product-img">
-                    <div class="product-info">
-                        <h3>Wireless Earbuds</h3>
-                        <p>Crystal clear audio with long battery life</p>
-                        <div class="price">$129.99</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product Detail Pages -->
-        <!-- Product 1 Detail -->
-        <div id="product-1" class="product-detail">
-            <h2>UltraThin Laptop</h2>
-            <div class="product-gallery">
-                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Laptop" class="main-image">
-                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Laptop angle 1">
-                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Laptop angle 2">
-                <img src="https://images.unsplash.com/photo-1593642532744-d377ab507dc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Laptop angle 3">
-            </div>
-            
-            <div class="detail-price">$999.99</div>
-            <div class="stock">In Stock: 15 items</div>
-            
-            <p class="description">
-                The UltraThin Laptop is designed for professionals who need power and portability. Featuring a 10th Gen Intel Core i7 processor, 16GB RAM, and a 512GB SSD, this laptop delivers exceptional performance. The 14-inch Full HD display offers vibrant colors and sharp details, while the lightweight design makes it easy to take anywhere.
-            </p>
-            
-            <table class="product-table">
-                <tr>
-                    <th>Specification</th>
-                    <th>Value</th>
-                </tr>
-                <tr>
-                    <td>Processor</td>
-                    <td>Intel Core i7-1065G7</td>
-                </tr>
-                <tr>
-                    <td>RAM</td>
-                    <td>16GB DDR4</td>
-                </tr>
-                <tr>
-                    <td>Storage</td>
-                    <td>512GB SSD</td>
-                </tr>
-                <tr>
-                    <td>Display</td>
-                    <td>14" Full HD (1920x1080)</td>
-                </tr>
-                <tr>
-                    <td>Graphics</td>
-                    <td>Intel Iris Plus Graphics</td>
-                </tr>
-                <tr>
-                    <td>Weight</td>
-                    <td>2.8 lbs (1.27 kg)</td>
-                </tr>
-                <tr>
-                    <td>Barcode</td>
-                    <td>1234567890123</td>
-                </tr>
-            </table>
-            
-            <button class="buy-btn">Buy Now</button>
-        </div>
-
-        <!-- About Page -->
-        <div id="about-page" class="page">
-            <h2>About TechGadgets</h2>
-            <p>TechGadgets is a premier online retailer specializing in the latest technology and electronic gadgets. Founded in 2015, we've grown from a small startup to a trusted source for tech enthusiasts across the country.</p>
-            
-            <p>Our mission is to make cutting-edge technology accessible to everyone. We carefully select each product in our catalogue to ensure it meets our high standards for quality, performance, and value.</p>
-            
-            <p>We offer a wide range of products including laptops, smartphones, tablets, smart home devices, audio equipment, and gaming accessories. Our team of tech experts is always on the lookout for the next innovation to bring to our customers.</p>
-            
-            <p>At TechGadgets, we believe in:</p>
-            <ul>
-                <li>Providing genuine, high-quality products</li>
-                <li>Offering competitive prices</li>
-                <li>Delivering exceptional customer service</li>
-                <li>Ensuring fast and reliable shipping</li>
-                <li>Standing behind our products with comprehensive warranties</li>
-            </ul>
-            
-            <p>Thank you for choosing TechGadgets for all your technology needs. We're committed to helping you stay connected and empowered through technology.</p>
-        </div>
-
-        <!-- Contact Page -->
-        <div id="contact-page" class="page">
-            <h2>Contact Us</h2>
-            <p>We'd love to hear from you! Reach out to us through any of the following methods:</p>
-            
-            <div class="contact-info">
-                <div>
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>123 Tech Street, Silicon Valley, CA 94301</span>
-                </div>
-                <div>
-                    <i class="fas fa-phone"></i>
-                    <span>+1 (555) 123-4567</span>
-                </div>
-                <div>
-                    <i class="fas fa-envelope"></i>
-                    <span>info@techgadgets.com</span>
-                </div>
-                <div>
-                    <i class="fas fa-clock"></i>
-                    <span>Monday-Friday: 9am-6pm PST</span>
+        <h2 class="section-title" id="products">Featured Products</h2>
+        
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wireless Headphones" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Wireless Headphones</h3>
+                    <p class="product-price">$149.99</p>
+                    <p class="product-description">Premium wireless headphones with active noise cancellation and 30-hour battery life.</p>
+                    <a href="#product1" class="btn view-product">View Details</a>
                 </div>
             </div>
             
-            <div class="contact-form">
-                <h3>Send us a Message</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="Enter your email">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" placeholder="What is this regarding?">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" placeholder="Type your message here"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Smart Watch" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Smart Watch</h3>
+                    <p class="product-price">$199.99</p>
+                    <p class="product-description">Feature-packed smartwatch with health monitoring, GPS, and smartphone connectivity.</p>
+                    <a href="#product2" class="btn view-product">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bluetooth Speaker" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Bluetooth Speaker</h3>
+                    <p class="product-price">$79.99</p>
+                    <p class="product-description">Portable Bluetooth speaker with 360° sound, waterproof design, and 12-hour playback.</p>
+                    <a href="#product3" class="btn view-product">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wireless Earbuds" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Wireless Earbuds</h3>
+                    <p class="product-price">$129.99</p>
+                    <p class="product-description">True wireless earbuds with crystal clear audio, touch controls, and charging case.</p>
+                    <a href="#product4" class="btn view-product">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1585298723682-7115561c51b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Portable Charger" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Portable Charger</h3>
+                    <p class="product-price">$49.99</p>
+                    <p class="product-description">High-capacity portable charger with fast charging technology for all your devices.</p>
+                    <a href="#product5" class="btn view-product">View Details</a>
+                </div>
             </div>
         </div>
     </div>
@@ -604,17 +606,25 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>TechGadgets</h3>
-                    <p>Your trusted source for the latest technology and electronic gadgets.</p>
+                    <h3>About Us</h3>
+                    <p>TechGadgets offers the latest and highest quality electronics to enhance your digital lifestyle.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
-                    <p><a href="#" class="nav-link" data-page="home">Home</a></p>
-                    <p><a href="#" class="nav-link" data-page="about">About</a></p>
-                    <p><a href="#" class="nav-link" data-page="contact">Contact Us</a></p>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Connect With Us</h3>
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Silicon Valley, CA</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@techgadgets.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -623,67 +633,41 @@
                     </div>
                 </div>
             </div>
-            <div class="copyright">
+            <div class="footer-bottom">
                 <p>&copy; 2023 TechGadgets. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Navigation functionality
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const page = this.getAttribute('data-page');
-                showPage(page);
-            });
-        });
-
-        // Product card functionality
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const productId = this.getAttribute('data-product');
-                showProduct(productId);
-            });
-        });
-
-        // Function to show a specific page
-        function showPage(page) {
-            // Hide all pages
-            document.getElementById('home-page').style.display = 'none';
-            document.querySelectorAll('.product-detail').forEach(page => {
-                page.style.display = 'none';
-            });
-            document.querySelectorAll('.page').forEach(p => {
-                p.style.display = 'none';
-            });
-
-            // Show the requested page
-            if (page === 'home') {
-                document.getElementById('home-page').style.display = 'block';
-            } else {
-                document.getElementById(`${page}-page`).style.display = 'block';
-            }
-        }
-
-        // Function to show a specific product
-        function showProduct(productId) {
-            // Hide all pages
-            document.getElementById('home-page').style.display = 'none';
-            document.querySelectorAll('.product-detail').forEach(page => {
-                page.style.display = 'none';
-            });
-            document.querySelectorAll('.page').forEach(p => {
-                p.style.display = 'none';
-            });
-
-            // Show the requested product
-            document.getElementById(`product-${productId}`).style.display = 'block';
-        }
-
-        // Initialize the page to show home
+        // Simple JavaScript for the product catalog
         document.addEventListener('DOMContentLoaded', function() {
-            showPage('home');
+            // Add smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add to cart functionality
+            const buyButtons = document.querySelectorAll('.view-product, .buy-now-btn');
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Product added to cart!');
+                });
+            });
         });
     </script>
 </body>
