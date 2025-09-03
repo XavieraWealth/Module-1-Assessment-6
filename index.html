@@ -312,58 +312,54 @@
         
         <div class="content">
             <div class="section">
-                <h2>How to Fix Your GitHub Pages Images</h2>
-                <p>Based on your GitHub Pages site, here are the steps to fix your image display issues:</p>
+                <h2>What to Do With This Code</h2>
+                <p>You have two options for using this diagnostic tool:</p>
                 
                 <div class="step">
                     <div class="step-number">1</div>
                     <div class="step-content">
-                        <h3>Check Your File Paths</h3>
-                        <p>The most common issue is incorrect paths to image files. GitHub Pages is case-sensitive and requires exact paths.</p>
-                        <div class="code">
-                            &lt;!-- Correct --&gt;<br>
-                            &lt;img src="images/photo.jpg" alt="Description"&gt;<br><br>
-                            
-                            &lt;!-- Incorrect --&gt;<br>
-                            &lt;img src="Images/photo.jpg" alt="Description"&gt;<br>
-                            &lt;img src="image/photo.jpg" alt="Description"&gt;
-                        </div>
+                        <h3>Use as a Diagnostic Tool</h3>
+                        <p>Save this HTML file to your computer and open it in a browser to diagnose common image issues.</p>
+                        <button class="btn" onclick="downloadFile()">Download Diagnostic Tool</button>
                     </div>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h3>Verify Case Sensitivity</h3>
-                        <p>GitHub Pages is case-sensitive. "Image.jpg" is different from "image.jpg". Check that your file names match exactly.</p>
-                        <div class="code">
-                            # Check your repository for exact file names<br>
-                            git status<br>
-                            git ls-files
+                        <h3>Replace Your GitHub Pages Code</h3>
+                        <p>Copy this entire code and replace your current index.html file on GitHub with this content.</p>
+                        <div class="note">
+                            <strong>Note:</strong> This will replace your current website with this diagnostic tool. Only do this if you want to completely replace your current site.
                         </div>
+                        <button class="btn btn-secondary" onclick="copyCode()">Copy HTML Code to Clipboard</button>
                     </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Common Reasons Images Don't Display on GitHub Pages</h2>
+                <p>Based on your GitHub Pages site, here are the most likely reasons some images aren't showing:</p>
+                
+                <h3>1. Incorrect File Paths</h3>
+                <p>The most common issue is incorrect paths to image files. GitHub Pages sites are case-sensitive and require exact paths.</p>
+                <div class="code">
+                    &lt;!-- Correct --&gt;<br>
+                    &lt;img src="images/photo.jpg" alt="Description"&gt;<br><br>
+                    
+                    &lt;!-- Incorrect --&gt;<br>
+                    &lt;img src="Images/photo.jpg" alt="Description"&gt;<br>
+                    &lt;img src="image/photo.jpg" alt="Description"&gt;
                 </div>
                 
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Check File Extensions</h3>
-                        <p>Make sure the file extension in your code matches the actual file extension (.jpg vs .jpeg vs .png).</p>
-                        <div class="code">
-                            &lt;!-- Match the actual file extension --&gt;<br>
-                            &lt;img src="images/photo.png" alt="Description"&gt;
-                        </div>
-                    </div>
-                </div>
+                <h3>2. Case Sensitivity</h3>
+                <p>GitHub Pages is case-sensitive. "Image.jpg" is different from "image.jpg".</p>
                 
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Verify Repository Structure</h3>
-                        <p>Your images should be in your repository, not just on your local machine. Push all image files to GitHub.</p>
-                        <a href="https://github.com/xavierawealth/Module-1-Assessment-6" class="btn" target="_blank">Check Your Repository</a>
-                    </div>
-                </div>
+                <h3>3. File Extensions</h3>
+                <p>Make sure the file extension in your code matches the actual file extension (.jpg vs .jpeg vs .png).</p>
+                
+                <h3>4. Repository Structure</h3>
+                <p>Your images should be in your repository, not just on your local machine.</p>
             </div>
             
             <div class="section">
@@ -452,56 +448,66 @@
             </div>
             
             <div class="section">
-                <h2>Quick Checklist for Fixing Images</h2>
-                <ul class="checklist">
-                    <li>Verify all image files are actually in your GitHub repository</li>
-                    <li>Check that file paths in your HTML match the case of your folders and files</li>
-                    <li>Ensure file extensions match (.jpg, .png, .gif, etc.)</li>
-                    <li>Use relative paths that work with your site's structure</li>
-                    <li>Clear your browser cache (Ctrl+F5) to see changes</li>
-                    <li>Check the browser console (F12) for error messages</li>
-                </ul>
+                <h2>How to Fix Your Images</h2>
                 
-                <div class="note">
-                    <strong>Pro Tip:</strong> After making changes to your GitHub repository, it may take a few minutes for the changes to appear on your live site.
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Check Your Repository Structure</h3>
+                        <p>Ensure your images are actually in your GitHub repository, not just on your local machine.</p>
+                        <a href="https://github.com/xavierawealth/Module-1-Assessment-6" class="btn" target="_blank">Check Your Repository</a>
+                    </div>
                 </div>
                 
-                <a href="https://xavierawealth.github.io/Module-1-Assessment-6/" class="btn btn-accent" target="_blank">View Your Live Site</a>
-                <a href="https://github.com/xavierawealth/Module-1-Assessment-6" class="btn btn-secondary" target="_blank">Check Your Repository</a>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Use Correct Relative Paths</h3>
+                        <p>If your HTML file is at the root and your images are in an "images" folder:</p>
+                        <div class="code">
+                            &lt;img src="images/your-image.jpg" alt="Description"&gt;
+                        </div>
+                        
+                        <p>If your HTML file is in a folder and you need to go up one level:</p>
+                        <div class="code">
+                            &lt;img src="../images/your-image.jpg" alt="Description"&gt;
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Verify Case Sensitivity</h3>
+                        <p>Check that the case of your folder and file names matches exactly what's in your code.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Clear Your Browser Cache</h3>
+                        <p>Sometimes old versions of pages are cached. Press Ctrl+F5 to hard refresh.</p>
+                    </div>
+                </div>
             </div>
             
             <div class="section">
-                <h2>Need More Help?</h2>
-                <p>If you're still having issues after checking all of the above:</p>
+                <h2>Next Steps</h2>
+                <p>If you're still having issues after checking these points:</p>
+                <ol>
+                    <li>Open your browser's Developer Tools (F12) and check the Console tab for error messages</li>
+                    <li>Look for 404 errors in the Network tab indicating missing files</li>
+                    <li>Verify your image files are committed and pushed to GitHub</li>
+                    <li>Check that your image files aren't too large (optimize images if needed)</li>
+                </ol>
                 
-                <div class="step">
-                    <div class="step-number"><i class="fas fa-bug"></i></div>
-                    <div class="step-content">
-                        <h3>Check Browser Console for Errors</h3>
-                        <p>Open Developer Tools (F12) and look for 404 errors in the Console or Network tab.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number"><i class="fas fa-upload"></i></div>
-                    <div class="step-content">
-                        <h3>Verify Files Are Uploaded</h3>
-                        <p>Ensure all image files have been committed and pushed to GitHub.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number"><i class="fas fa-history"></i></div>
-                    <div class="step-content">
-                        <h3>Wait for GitHub Pages Build</h3>
-                        <p>Sometimes changes take a few minutes to appear. Check your repository's Actions tab to see if the build is complete.</p>
-                    </div>
-                </div>
+                <a href="https://xavierawealth.github.io/Module-1-Assessment-6/" class="btn btn-accent" target="_blank">View Your Live Site</a>
             </div>
         </div>
         
         <footer>
-            <p>GitHub Pages Image Fix Guide • Created to help resolve your image display issues</p>
+            <p>GitHub Pages Image Diagnostic Tool • Created to help fix your site</p>
         </footer>
     </div>
 
@@ -525,6 +531,35 @@
             // Show the specific tab content and add active class to the button
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
+        }
+        
+        // Function to copy the entire HTML code to clipboard
+        function copyCode() {
+            const htmlContent = document.documentElement.outerHTML;
+            
+            navigator.clipboard.writeText(htmlContent)
+                .then(() => {
+                    alert('HTML code copied to clipboard! You can now paste it into your index.html file on GitHub.');
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                    alert('Failed to copy code. Please try again.');
+                });
+        }
+        
+        // Function to download the HTML file
+        function downloadFile() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'github-pages-image-fix.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
         
         // Simple image status checker
