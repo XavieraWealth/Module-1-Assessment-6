@@ -513,6 +513,15 @@
             padding: 1rem 2rem;
             font-size: 1.2rem;
         }
+
+        /* Page Content Styles */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -524,78 +533,215 @@
                 <span>TechGadgets</span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Premium Tech Products</h1>
-                <p>Discover our curated collection of high-quality electronics and gadgets</p>
-                <a href="#products" class="btn">Explore Products</a>
-            </div>
-        </section>
+    <!-- Home Page Content -->
+    <div id="home" class="page-content active">
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Premium Tech Products</h1>
+                    <p>Discover our curated collection of high-quality electronics and gadgets</p>
+                    <a href="#products" class="btn">Explore Products</a>
+                </div>
+            </section>
 
-        <h2 class="section-title" id="products">Featured Products</h2>
-        
-        <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wireless Headphones" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Wireless Headphones</h3>
-                    <p class="product-price">$149.99</p>
-                    <p class="product-description">Premium wireless headphones with active noise cancellation and 30-hour battery life.</p>
-                    <a href="#product1" class="btn view-product">View Details</a>
+            <h2 class="section-title" id="products">Featured Products</h2>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wireless Headphones" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Wireless Headphones</h3>
+                        <p class="product-price">$149.99</p>
+                        <p class="product-description">Premium wireless headphones with active noise cancellation and 30-hour battery life.</p>
+                        <a href="#" class="btn view-product nav-link" data-page="product1">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Smart Watch" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Smart Watch</h3>
+                        <p class="product-price">$199.99</p>
+                        <p class="product-description">Feature-packed smartwatch with health monitoring, GPS, and smartphone connectivity.</p>
+                        <a href="#" class="btn view-product nav-link" data-page="product2">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bluetooth Speaker" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Bluetooth Speaker</h3>
+                        <p class="product-price">$79.99</p>
+                        <p class="product-description">Portable Bluetooth speaker with 360° sound, waterproof design, and 12-hour playback.</p>
+                        <a href="#" class="btn view-product nav-link" data-page="product3">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wireless Earbuds" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Wireless Earbuds</h3>
+                        <p class="product-price">$129.99</p>
+                        <p class="product-description">True wireless earbuds with crystal clear audio, touch controls, and charging case.</p>
+                        <a href="#" class="btn view-product nav-link" data-page="product4">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1585298723682-7115561c51b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Portable Charger" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Portable Charger</h3>
+                        <p class="product-price">$49.99</p>
+                        <p class="product-description">High-capacity portable charger with fast charging technology for all your devices.</p>
+                        <a href="#" class="btn view-product nav-link" data-page="product5">View Details</a>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- About Page Content -->
+    <div id="about" class="page-content">
+        <div class="container">
+            <h2 class="section-title">About TechGadgets</h2>
             
-            <!-- Product 2 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Smart Watch" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Smart Watch</h3>
-                    <p class="product-price">$199.99</p>
-                    <p class="product-description">Feature-packed smartwatch with health monitoring, GPS, and smartphone connectivity.</p>
-                    <a href="#product2" class="btn view-product">View Details</a>
+            <div class="about-content">
+                <h2>Our Story</h2>
+                <p>TechGadgets was founded in 2015 with a simple mission: to provide high-quality, innovative technology products at affordable prices. What started as a small online store has grown into a trusted destination for tech enthusiasts across the country.</p>
+                
+                <h2>Our Products</h2>
+                <p>We carefully select each product in our catalog to ensure it meets our high standards for quality, performance, and value. From wireless headphones to smart home devices, we offer the latest technology from leading brands and emerging innovators.</p>
+                
+                <h2>Our Commitment</h2>
+                <p>At TechGadgets, we're committed to customer satisfaction. We offer a 30-day money-back guarantee on all products, free shipping on orders over $50, and dedicated customer support to help you get the most out of your purchases.</p>
+                
+                <h2>Why Choose Us?</h2>
+                <p>With so many options for tech products online, we stand out through our commitment to quality, customer service, and competitive pricing. Our team of tech experts tests every product we sell, and we're always available to answer your questions and provide recommendations.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page Content -->
+    <div id="contact" class="page-content">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Silicon Valley, CA 94301</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@techgadgets.com</p>
+                    <p><i class="fas fa-clock"></i> Monday-Friday: 9am-6pm PST</p>
+                    <p><i class="fas fa-clock"></i> Saturday: 10am-4pm PST</p>
+                    <p><i class="fas fa-clock"></i> Sunday: Closed</p>
+                    
+                    <h2>Follow Us</h2>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i> Facebook</a><br>
+                        <a href="#"><i class="fab fa-twitter"></i> Twitter</a><br>
+                        <a href="#"><i class="fab fa-instagram"></i> Instagram</a><br>
+                        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
                 </div>
             </div>
-            
-            <!-- Product 3 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bluetooth Speaker" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Bluetooth Speaker</h3>
-                    <p class="product-price">$79.99</p>
-                    <p class="product-description">Portable Bluetooth speaker with 360° sound, waterproof design, and 12-hour playback.</p>
-                    <a href="#product3" class="btn view-product">View Details</a>
+        </div>
+    </div>
+
+    <!-- Product Pages -->
+    <!-- Product 1 -->
+    <div id="product1" class="page-content">
+        <div class="container">
+            <div class="product-detail">
+                <div class="product-gallery">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wireless Headphones" class="main-image">
+                    <div class="thumbnail-container">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Headphones" class="thumbnail">
+                        <img src="https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Headphones Side View" class="thumbnail">
+                        <img src="https://images.unsplash.com/photo-1599669454699-248893623464?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Headphones in Case" class="thumbnail">
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Product 4 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wireless Earbuds" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Wireless Earbuds</h3>
-                    <p class="product-price">$129.99</p>
-                    <p class="product-description">True wireless earbuds with crystal clear audio, touch controls, and charging case.</p>
-                    <a href="#product4" class="btn view-product">View Details</a>
-                </div>
-            </div>
-            
-            <!-- Product 5 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1585298723682-7115561c51b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Portable Charger" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Portable Charger</h3>
-                    <p class="product-price">$49.99</p>
-                    <p class="product-description">High-capacity portable charger with fast charging technology for all your devices.</p>
-                    <a href="#product5" class="btn view-product">View Details</a>
+                
+                <div class="product-detail-info">
+                    <h1 class="product-detail-title">Wireless Headphones</h1>
+                    <p class="product-detail-price">$149.99</p>
+                    
+                    <div class="stock-info">
+                        <i class="fas fa-check-circle"></i>
+                        <span>In Stock: 15 items</span>
+                    </div>
+                    
+                    <p class="product-detail-description">
+                        Experience premium sound quality with our advanced wireless headphones. Featuring active noise cancellation technology, these headphones create an immersive listening experience by blocking out ambient noise. With 30 hours of battery life, quick charging capability, and ultra-comfortable memory foam ear cushions, these headphones are perfect for travel, work, or relaxing at home.
+                    </p>
+                    
+                    <table class="product-specs">
+                        <tr>
+                            <th>Weight</th>
+                            <td>250g</td>
+                        </tr>
+                        <tr>
+                            <th>Dimensions</th>
+                            <td>18 x 16 x 8 cm</td>
+                        </tr>
+                        <tr>
+                            <th>Battery Life</th>
+                            <td>30 hours</td>
+                        </tr>
+                        <tr>
+                            <th>Charging Time</th>
+                            <td>2 hours</td>
+                        </tr>
+                        <tr>
+                            <th>Connectivity</th>
+                            <td>Bluetooth 5.0</td>
+                        </tr>
+                        <tr>
+                            <th>Color</th>
+                            <td>Matte Black</td>
+                        </tr>
+                    </table>
+                    
+                    <button class="btn buy-now-btn">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -612,9 +758,9 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                        <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -640,25 +786,50 @@
     </footer>
 
     <script>
-        // Simple JavaScript for the product catalog
+        // Navigation and page switching
         document.addEventListener('DOMContentLoaded', function() {
-            // Add smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+            // Handle navigation clicks
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
                     
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
+                    const pageId = this.getAttribute('data-page');
+                    switchPage(pageId);
                     
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
+                    // Scroll to top when navigating
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
             });
+            
+            // Handle contact form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+            
+            // Function to switch between pages
+            function switchPage(pageId) {
+                // Hide all pages
+                document.querySelectorAll('.page-content').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show the selected page
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update URL hash
+                window.location.hash = pageId;
+            }
+            
+            // Check URL hash on page load
+            if (window.location.hash) {
+                const pageId = window.location.hash.substring(1);
+                switchPage(pageId);
+            }
             
             // Add to cart functionality
             const buyButtons = document.querySelectorAll('.view-product, .buy-now-btn');
